@@ -17,7 +17,7 @@ A partir de la solución del `Ejercicio N° 5 - Empresa de Transporte`, resolver
 
 ```
 Dsw2026Ej14/ (solución)
-├── Dsw2026Ej14/ (proyecto)
+├── Dsw2026Ej14.Presentation/ (proyecto)
 │   ├── Presenters/
 │   ├── Interfaces/
 │   ├── Models/
