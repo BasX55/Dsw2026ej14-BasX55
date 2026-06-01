@@ -61,6 +61,19 @@ public class Persistencia
         return Sucursales;
     }
 
+    public static bool AgregarVehiculo(Vehiculo vehiculo)
+    {
+        try
+        {
+            Vehiculos.Add(vehiculo);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
     public static void InicializarDatos()
     {
         InicializarResponsables();

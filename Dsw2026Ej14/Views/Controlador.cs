@@ -5,6 +5,7 @@ namespace Dsw2026Ej14.Views;
 
 public class Controlador
 {
+
     private readonly ConsoleView _vista;
 
     public Controlador(ConsoleView vista)
@@ -38,5 +39,26 @@ public class Controlador
             }
         }
         _vista.MostrarConsumos(consumoElectricos, consumoCombustible);
+    }
+
+    public List<Sucursal> ObtenerSucursales()
+    {
+        return Persistencia.GetSucursales();
+    }
+
+    public bool AgregarVehiculoElectrico(string patente, string marca, string modelo, int anio,
+        double capacidadCarga, Sucursal sucursal, double kwhBase)
+    {
+        VehiculoElectrico vehiculo = new VehiculoElectrico(patente, marca, modelo, anio,
+            capacidadCarga, sucursal, kwhBase);
+        return Persistencia.AgregarVehiculo(vehiculo);
+    }
+
+    public bool AgregarVehiculoCombustible(string patente, string marca, string modelo, int anio,
+        double capacidadCarga, Sucursal sucursal, double kilometrosPorLitro, double litrosExtra)
+    {
+        VehiculoCombustible vehiculo = new VehiculoCombustible(patente, marca, modelo, anio,
+            capacidadCarga, sucursal, kilometrosPorLitro, litrosExtra);
+        return Persistencia.AgregarVehiculo(vehiculo);
     }
 }
