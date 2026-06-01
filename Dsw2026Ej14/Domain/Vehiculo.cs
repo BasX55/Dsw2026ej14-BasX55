@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Dsw2026Ej14.Domain;
+﻿namespace Dsw2026Ej14.Domain;
 
 public abstract class Vehiculo: EntidadBase
 {

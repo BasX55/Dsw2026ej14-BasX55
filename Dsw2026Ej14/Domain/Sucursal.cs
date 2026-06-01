@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Dsw2026Ej14.Domain;
 
-namespace Dsw2026Ej14.Domain;
-
-public class Sucursal
+public class Sucursal: EntidadBase
 {
     public string Codigo { get; init; }
     public string Direccion { get; init; }
     public string Ciudad { get; init; }
     public Responsable Responsable { get; init; }
 
-    public Sucursal(string codigo, string direccion, string ciudad, Responsable responsable)
+    public Sucursal(string codigo, string direccion, string ciudad, Responsable responsable, Guid? id = null) :
+        base(id)
     {
         Codigo = codigo;
         Direccion = direccion;

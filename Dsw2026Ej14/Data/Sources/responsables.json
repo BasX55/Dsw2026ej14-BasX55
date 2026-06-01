@@ -1,0 +1,14 @@
+[
+  {
+    "Id": "682ECC55-6C95-441D-BEA4-B39F31EAA0AA",
+    "Nombre": "Carlos Gómez",
+    "Documento": "25444111",
+    "Telefono": "3815551111"
+  },
+  {
+    "Id": "40668867-799D-4366-83F9-6795DC2E2DF9",
+    "Nombre": "Laura Pérez",
+    "Documento": "30111222",
+    "Telefono": "3815552222"
+  }
+]

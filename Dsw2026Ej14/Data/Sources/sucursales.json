@@ -1,0 +1,16 @@
+[
+  {
+    "Id": "725C01FE-6240-4FC3-8762-B47F74374828",
+    "Codigo": "SUC01",
+    "Direccion": "Av. Belgrano 1200",
+    "Ciudad": "Tucumán",
+    "ResponsableId": "682ECC55-6C95-441D-BEA4-B39F31EAA0AA"
+  },
+  {
+    "Id": "F1430D7C-50EC-4C9D-9F29-5B628C3D2762",
+    "Codigo": "SUC02",
+    "Direccion": "San Martín 450",
+    "Ciudad": "Yerba Buena",
+    "ResponsableId": "40668867-799D-4366-83F9-6795DC2E2DF9"
+  }
+]

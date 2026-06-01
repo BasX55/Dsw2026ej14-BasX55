@@ -1,7 +1,6 @@
-﻿using Dsw2026Ej14.Domain;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Dsw2026Ej14.Data.Dtos;
+using Dsw2026Ej14.Domain;
+using System.Text.Json;
 
 namespace Dsw2026Ej14.Data;
 
@@ -13,37 +12,69 @@ public class Persistencia
 
     private static void InicializarResponsables()
     {
-        Responsable r1 = new Responsable("Carlos Gómez", "25444111", "3815551111");
-        Responsable r2 = new Responsable("Laura Pérez", "30111222", "3815552222");
-        Responsables.Add(r1);
-        Responsables.Add(r2);
+        var responsablesData = CargarDatosDeArchivo<ResponsableDto>("responsables");
+
+        if (responsablesData != null)
+        {
+            foreach (var data in responsablesData)
+            {
+                Responsable r = new Responsable(data.Nombre, data.Documento, data.Telefono, data.Id);
+                Responsables.Add(r);
+            }
+        }
     }
 
     private static void InicializarSucursales()
     {
-        Sucursal s1 = new Sucursal("SUC01", "Av. Belgrano 1200", "Tucumán", Responsables[0]);
-        Sucursal s2 = new Sucursal("SUC02", "San Martín 450", "Yerba Buena", Responsables[1]);
+        var sucursalesData = CargarDatosDeArchivo<SucursalDto>("sucursales");
 
-        Sucursales.Add(s1);
-        Sucursales.Add(s2);
+        if (sucursalesData != null)
+        {
+            foreach (var data in sucursalesData)
+            {
+                var responsable = Responsables.Find(r => r.Id == data.ResponsableId);
+                if (responsable != null)
+                {
+                    Sucursal s = new Sucursal(data.Codigo, data.Direccion, data.Ciudad, responsable, data.Id);
+                    Sucursales.Add(s);
+                }
+            }
+        }
     }
 
     private static void InicializarVehiculos()
     {
-        Sucursal s1 = Sucursales[0];
-        Sucursal s2 = Sucursales[1];
-        var id = new Guid("DD0A4A95-8ED7-4CFB-ACC7-C2BAC23AB54C");
-        VehiculoElectrico v1 = new VehiculoElectrico("AE123FG", "Renault", "Kangoo E-Tech", 2020, 1000, s1, 16, id);
-        id = new Guid("B3BBB9CA-072F-47A2-8CA1-A0105B155BF9");
-        VehiculoElectrico v2 = new VehiculoElectrico("AF456HI", "Ford", "E-Transit", 2021, 1300, s2, 16, id);
-        id = new Guid("E09F407F-22A3-42F8-A114-5079FD4F999D");
-        VehiculoCombustible v3 = new VehiculoCombustible("AC789JK", "Iveco", "Daily", 2023, 1200, s1, 8, 1.5, id);
-        VehiculoCombustible v4 = new VehiculoCombustible("AD321LM", "Mercedes", "Sprinter", 2020, 1200, s2, 7, 1);
+        var vehiculosData = CargarDatosDeArchivo<VehiculoDto>("vehiculos");
 
-        Vehiculos.Add(v1);
-        Vehiculos.Add(v2);
-        Vehiculos.Add(v3);
-        Vehiculos.Add(v4);
+        if (vehiculosData != null)
+        {
+            foreach (var data in vehiculosData)
+            {
+                var sucursal = Sucursales.Find(s => s.Id == data.SucursalId);
+                if (sucursal != null)
+                {
+                    Vehiculo vehiculo;
+                    if (data.Tipo == "Electrico")
+                    {
+                        vehiculo = new VehiculoElectrico(data.Patente, data.Marca, data.Modelo, 
+                            data.Anio, data.CapacidadCarga, sucursal, data.KwhBase, data.Id);
+                    }
+                    else
+                    {
+                        vehiculo = new VehiculoCombustible(data.Patente, data.Marca, data.Modelo, 
+                            data.Anio, data.CapacidadCarga, sucursal, data.KilometrosPorLitro, data.LitrosExtra, data.Id);
+                    }
+                    Vehiculos.Add(vehiculo);
+                }
+            }
+        }
+    }
+
+    private static List<T>? CargarDatosDeArchivo<T>(string file)
+    {
+        string jsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data\\Sources", $"{file}.json");
+        string jsonContent = File.ReadAllText(jsonPath);
+        return JsonSerializer.Deserialize<List<T>>(jsonContent);
     }
 
     public static List<Vehiculo> GetVehiculos()

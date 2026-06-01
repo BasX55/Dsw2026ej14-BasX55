@@ -1,0 +1,48 @@
+[
+  {
+    "Id": "DD0A4A95-8ED7-4CFB-ACC7-C2BAC23AB54C",
+    "Tipo": "Electrico",
+    "Patente": "AE123FG",
+    "Marca": "Renault",
+    "Modelo": "Kangoo E-Tech",
+    "Anio": 2020,
+    "CapacidadCarga": 1000,
+    "SucursalId": "725C01FE-6240-4FC3-8762-B47F74374828",
+    "KwhBase": 16
+  },
+  {
+    "Id": "B3BBB9CA-072F-47A2-8CA1-A0105B155BF9",
+    "Tipo": "Electrico",
+    "Patente": "AF456HI",
+    "Marca": "Ford",
+    "Modelo": "E-Transit",
+    "Anio": 2021,
+    "CapacidadCarga": 1300,
+    "SucursalId": "F1430D7C-50EC-4C9D-9F29-5B628C3D2762",
+    "KwhBase": 16
+  },
+  {
+    "Id": "E09F407F-22A3-42F8-A114-5079FD4F999D",
+    "Tipo": "Combustible",
+    "Patente": "AC789JK",
+    "Marca": "Iveco",
+    "Modelo": "Daily",
+    "Anio": 2023,
+    "CapacidadCarga": 1200,
+    "SucursalId": "725C01FE-6240-4FC3-8762-B47F74374828",
+    "KilometrosPorLitro": 8,
+    "LitrosExtra": 1.5
+  },
+  {
+    "Id": null,
+    "Tipo": "Combustible",
+    "Patente": "AD321LM",
+    "Marca": "Mercedes",
+    "Modelo": "Sprinter",
+    "Anio": 2020,
+    "CapacidadCarga": 1200,
+    "SucursalId": "F1430D7C-50EC-4C9D-9F29-5B628C3D2762",
+    "KilometrosPorLitro": 7,
+    "LitrosExtra": 1
+  }
+]
