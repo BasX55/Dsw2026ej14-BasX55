@@ -9,7 +9,7 @@ namespace Dsw2026Ej14.Presentation.Views
 {
     public class ListarVehiculosControlador
     {
-        public readonly ListarVehiculosView _vista;
+        private readonly ListarVehiculosView _vista;
 
         public ListarVehiculosControlador(ListarVehiculosView vista) 
         {

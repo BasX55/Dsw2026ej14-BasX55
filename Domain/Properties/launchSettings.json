@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Dsw2026Ej14.Domain": {
+      "commandName": "Project",
+      "debugEngines": "managed"
+    }
+  }
+}

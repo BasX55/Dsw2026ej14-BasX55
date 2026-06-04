@@ -10,7 +10,7 @@ namespace Dsw2026Ej14.Presentation.Views
     public class ListarVehiculosView : BaseView
     {
         private ListarVehiculosControlador _controlador;
-        public ListarVehiculosView(ListarVehiculosView listarVehiculosView)
+        public ListarVehiculosView()
         {
             _controlador = new ListarVehiculosControlador(this);
         }

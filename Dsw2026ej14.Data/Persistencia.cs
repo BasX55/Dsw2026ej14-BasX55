@@ -72,7 +72,7 @@ public class Persistencia
 
     private static List<T>? CargarDatosDeArchivo<T>(string file)
     {
-        string jsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data\\Sources", $"{file}.json");
+        string jsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Sources", $"{file}.json");
         string jsonContent = File.ReadAllText(jsonPath);
         return JsonSerializer.Deserialize<List<T>>(jsonContent);
     }

@@ -7,6 +7,10 @@ namespace Dsw2026Ej14.Presentation.Views
     public class MenuView : BaseView
     {
         private MenuControlador _controlador;
+        public MenuView()
+        {
+            _controlador = new MenuControlador(this);
+        }
         public void DibujarMenu()
         {
             
@@ -24,11 +28,11 @@ namespace Dsw2026Ej14.Presentation.Views
                 if (opcion == "1")
                 {
                     Console.WriteLine("Listando vehículos...");
-                    _controlador.ListarVehiculos();
+                    _controlador.OpcionSeleccionada(1);
                 }
                 else if (opcion == "2")
                 {
-                    AgregarVehiculo();
+                    _controlador.OpcionSeleccionada(2);
                 }
             }
             while (opcion != "3");
