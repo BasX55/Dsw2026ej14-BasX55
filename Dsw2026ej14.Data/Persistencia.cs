@@ -1,5 +1,5 @@
 ﻿using Dsw2026Ej14.Data.Dtos;
-using Dsw2026Ej14.Domain;
+using Dsw2026Ej14.Domain.Entities;
 using System.Text.Json;
 
 namespace Dsw2026Ej14.Data;

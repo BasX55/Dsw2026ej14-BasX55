@@ -1,6 +1,6 @@
-﻿using Dsw2026Ej14.Domain;
+﻿using Dsw2026Ej14.Domain.Entities;
 
-namespace Dsw2026Ej14.Views;
+namespace Dsw2026Ej14.Presentation.Views;
 
 public class ConsoleView
 {
@@ -11,31 +11,7 @@ public class ConsoleView
         _controlador = new Controlador(this);
     }
 
-    public void DibujarMenu()
-    {
-        string? opcion = null;
-        do
-        {
-            DibujarEncabezado();
-            Console.WriteLine("Elija una opción: \n");
-            Console.WriteLine("1. Listar vehículos");
-            Console.WriteLine("2. Agregar vehículo");
-            Console.WriteLine("3. Salir");
-            Console.WriteLine("\n");
-            Console.WriteLine("Ingrese su opción: ");
-            opcion = Console.ReadLine();
-            if (opcion == "1")
-            {
-                Console.WriteLine("Listando vehículos...");
-                _controlador.ListarVehiculos();
-            }
-            else if (opcion == "2")
-            {
-                AgregarVehiculo();
-            }
-        }
-        while (opcion != "3");
-    }
+    
 
     public void ListarVehiculos(List<VehiculoViewModel> vehiculos)
     {
@@ -224,36 +200,7 @@ public class ConsoleView
         Console.ReadLine();
     }
 
-    private void DibjuarDatos(int columnas, List<VehiculoViewModel> vehiculos)
-    {
-        int ancho = Console.WindowWidth / columnas;
-        foreach (var vehiculo in vehiculos)
-        {
-            Console.Write("|");
-            CentrarTexto(vehiculo.Patente, out int l, ancho - 1, false);
-            Console.Write("".PadRight(ancho - 1 - l));
-            Console.Write("|");
-            CentrarTexto(vehiculo.Vehiculo, out l, ancho - 1, false);
-            Console.Write("".PadRight(ancho - 1 - l));
-            Console.Write("|");
-            CentrarTexto(vehiculo.Tipo, out l, ancho - 1, false);
-            Console.Write("".PadRight(ancho - 1 - l));
-            Console.Write("|");
-            CentrarTexto(vehiculo.CapacidadCarga.ToString(), out l, ancho - 1, false);
-            Console.Write("".PadRight(ancho - 1 - l));
-            Console.Write("|");
-            CentrarTexto(vehiculo.KmPorLitro.ToString(), out l, ancho - 1, false);
-            Console.Write("".PadRight(ancho - 1 - l));
-            Console.Write("|");
-            CentrarTexto(vehiculo.Anio.ToString(), out l, ancho - 1, false);
-            Console.Write("".PadRight(ancho - 1 - l));
-            Console.Write("|");
-            CentrarTexto(vehiculo.LitrosExtra.ToString(), out l, ancho - 1, false);
-            Console.Write("".PadRight(ancho - 1 - l));
-            Console.Write("|");
-            CentrarTexto(vehiculo.KmARecorrer.ToString(), out l, ancho - 1, false);
-            Console.Write("".PadRight(ancho - 1 - l));
-        }
+    
     }
 
     #region Util
