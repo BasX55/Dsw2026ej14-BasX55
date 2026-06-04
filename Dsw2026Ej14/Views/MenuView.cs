@@ -4,10 +4,12 @@ using System.Text;
 
 namespace Dsw2026Ej14.Presentation.Views
 {
-    internal class MenuView
+    public class MenuView : BaseView
     {
+        private MenuControlador _controlador;
         public void DibujarMenu()
         {
+            
             string? opcion = null;
             do
             {
