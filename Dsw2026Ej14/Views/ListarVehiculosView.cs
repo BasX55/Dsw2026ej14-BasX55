@@ -1,18 +1,21 @@
 ﻿using Dsw2026Ej14.Data;
 using Dsw2026Ej14.Domain.Entities;
+using Dsw2026Ej14.Presentation.Interfaces;
 using Dsw2026Ej14.Presentation.Models;
+using Dsw2026Ej14.Presentation.Presenters;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Dsw2026Ej14.Presentation.Views
 {
-    public class ListarVehiculosView : BaseView
+    public class ListarVehiculosView : BaseView, IListarVehiculosView
     {
-        private ListarVehiculosControlador _controlador;
+        private ListarVehiculosPresenter _presenter;
         public ListarVehiculosView()
         {
-            _controlador = new ListarVehiculosControlador(this);
+            _presenter = new ListarVehiculosPresenter(this);
+            _presenter.ListarVehiculos();
         }
         public void ListarVehiculos(List<VehiculoViewModel> vehiculos)
         {
@@ -33,7 +36,7 @@ namespace Dsw2026Ej14.Presentation.Views
             {
                 vehiculosDict.Add(vehiculo.Patente, vehiculo.KmARecorrer);
             }
-            _controlador.CalcularConsumos(vehiculosDict);
+            _presenter.CalcularConsumos(vehiculosDict);
         }
 
         public void MostrarConsumos(double electricos, double combustible)

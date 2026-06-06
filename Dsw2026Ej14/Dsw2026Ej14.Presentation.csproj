@@ -8,13 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Dsw2026Ej14.Domain.csproj" />
-    <ProjectReference Include="..\Dsw2026ej14.Data\Dsw2026Ej14.Data.csproj" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.8" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Presenters\" />
+    <ProjectReference Include="..\Domain\Dsw2026Ej14.Domain.csproj" />
+    <ProjectReference Include="..\Dsw2026ej14.Data\Dsw2026Ej14.Data.csproj" />
   </ItemGroup>
 
 </Project>

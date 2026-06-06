@@ -1,15 +1,17 @@
-﻿using System;
+﻿using Dsw2026Ej14.Presentation.Interfaces;
+using Dsw2026Ej14.Presentation.Presenters;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Dsw2026Ej14.Presentation.Views
 {
-    public class MenuView : BaseView
+    public class MenuView : BaseView, IMenuView
     {
-        private MenuControlador _controlador;
+        private MenuPresenter _presenter;
         public MenuView()
         {
-            _controlador = new MenuControlador(this);
+            _presenter = new MenuPresenter(this);
         }
         public void DibujarMenu()
         {
@@ -28,11 +30,11 @@ namespace Dsw2026Ej14.Presentation.Views
                 if (opcion == "1")
                 {
                     Console.WriteLine("Listando vehículos...");
-                    _controlador.OpcionSeleccionada(1);
+                    _presenter.ListarVehiculo();
                 }
                 else if (opcion == "2")
                 {
-                    _controlador.OpcionSeleccionada(2);
+                    _presenter.AgregarVehiculo();
                 }
             }
             while (opcion != "3");

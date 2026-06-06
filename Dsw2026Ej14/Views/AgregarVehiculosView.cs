@@ -1,17 +1,21 @@
 ﻿using Dsw2026Ej14.Domain.Entities;
+using Dsw2026Ej14.Presentation.Interfaces;
+using Dsw2026Ej14.Presentation.Presenters;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Dsw2026Ej14.Presentation.Views
 {
-    public class AgregarVehiculosView : BaseView
+    public class AgregarVehiculosView : BaseView, IAgregarVehiculosView
     {
-        private AgregarVehiculosControlador _controlador;
+        private AgregarVehiculosPresenter _presenter;
 
         public AgregarVehiculosView()
         {
-            _controlador = new AgregarVehiculosControlador(this);
+            _presenter = new AgregarVehiculosPresenter(this);
+            _presenter.AgregarVehiculo();
+            
         }
 
         public void AgregarVehiculo()
@@ -54,7 +58,7 @@ namespace Dsw2026Ej14.Presentation.Views
             Console.WriteLine("=== Datos específicos para Vehículo Eléctrico ===");
             double kwhBase = LeerDecimal("kWh Base (por cada 100 km)");
 
-            bool resultado = _controlador.AgregarVehiculoElectrico(patente, marca, modelo, anio,
+            bool resultado = _presenter.AgregarVehiculoElectrico(patente, marca, modelo, anio,
                 capacidadCarga, sucursal, kwhBase);
 
             if (resultado)
@@ -75,7 +79,7 @@ namespace Dsw2026Ej14.Presentation.Views
             double kmPorLitro = LeerDecimal("Kilómetros por Litro");
             double litrosExtra = LeerDecimal("Litros Extra");
 
-            bool resultado = _controlador.AgregarVehiculoCombustible(patente, marca, modelo, anio,
+            bool resultado = _presenter.AgregarVehiculoCombustible(patente, marca, modelo, anio,
                 capacidadCarga, sucursal, kmPorLitro, litrosExtra);
 
             if (resultado)
@@ -93,7 +97,7 @@ namespace Dsw2026Ej14.Presentation.Views
             Console.WriteLine();
             Console.WriteLine("=== Seleccione una Sucursal ===");
 
-            List<Sucursal> sucursales = _controlador.ObtenerSucursales();
+            List<Sucursal> sucursales = _presenter.ObtenerSucursales();
 
             for (int i = 0; i < sucursales.Count; i++)
             {

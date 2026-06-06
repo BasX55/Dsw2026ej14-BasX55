@@ -1,19 +1,22 @@
 ﻿using Dsw2026Ej14.Data;
 using Dsw2026Ej14.Domain.Entities;
+using Dsw2026Ej14.Presentation.Interfaces;
 using Dsw2026Ej14.Presentation.Models;
+using Dsw2026Ej14.Presentation.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dsw2026Ej14.Presentation.Views
+namespace Dsw2026Ej14.Presentation.Presenters
 {
-    public class ListarVehiculosControlador
+    public class ListarVehiculosPresenter : IListarVehiculosPresenter
     {
         private readonly ListarVehiculosView _vista;
 
-        public ListarVehiculosControlador(ListarVehiculosView vista) 
+        public ListarVehiculosPresenter(ListarVehiculosView vista) 
         {
             _vista = vista;
+            
         }
 
         public void ListarVehiculos()
