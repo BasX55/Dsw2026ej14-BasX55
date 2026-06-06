@@ -9,15 +9,16 @@ namespace Dsw2026Ej14.Presentation.Views
 {
     public class AgregarVehiculosView : BaseView, IAgregarVehiculosView
     {
-        private AgregarVehiculosPresenter _presenter;
+        private IAgregarVehiculosPresenter _presenter;
 
         public AgregarVehiculosView()
         {
-            _presenter = new AgregarVehiculosPresenter(this);
-            _presenter.AgregarVehiculo();
-            
         }
 
+        public void SetPresenter(IAgregarVehiculosPresenter presenter)
+        {
+            _presenter = presenter;
+        }
         public void AgregarVehiculo()
         {
             LimpiarPantalla();

@@ -11,11 +11,10 @@ namespace Dsw2026Ej14.Presentation.Views
 {
     public class ListarVehiculosView : BaseView, IListarVehiculosView
     {
-        private ListarVehiculosPresenter _presenter;
+        private IListarVehiculosPresenter _presenter;
         public ListarVehiculosView()
         {
-            _presenter = new ListarVehiculosPresenter(this);
-            _presenter.ListarVehiculos();
+            
         }
         public void ListarVehiculos(List<VehiculoViewModel> vehiculos)
         {
@@ -51,5 +50,9 @@ namespace Dsw2026Ej14.Presentation.Views
             Console.ReadLine();
         }
 
+        public void SetPresenter(IListarVehiculosPresenter presenter)
+        {
+            _presenter = presenter;
+        }
     }
 }

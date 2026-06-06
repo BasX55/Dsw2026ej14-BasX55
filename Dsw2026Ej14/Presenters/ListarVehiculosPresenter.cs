@@ -11,12 +11,13 @@ namespace Dsw2026Ej14.Presentation.Presenters
 {
     public class ListarVehiculosPresenter : IListarVehiculosPresenter
     {
-        private readonly ListarVehiculosView _vista;
+        private IListarVehiculosView _vista;
 
-        public ListarVehiculosPresenter(ListarVehiculosView vista) 
+        public ListarVehiculosPresenter(IListarVehiculosView vista) 
         {
             _vista = vista;
-            
+            _vista.SetPresenter(this);
+            ListarVehiculos();
         }
 
         public void ListarVehiculos()

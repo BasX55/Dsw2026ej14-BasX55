@@ -6,7 +6,7 @@ namespace Dsw2026Ej14.Presentation.Interfaces
 {
     public interface IAgregarVehiculosView
     {
-        public void AgregarVehiculo();
-
+        void AgregarVehiculo();
+        void SetPresenter(IAgregarVehiculosPresenter presentador);
     }
 }

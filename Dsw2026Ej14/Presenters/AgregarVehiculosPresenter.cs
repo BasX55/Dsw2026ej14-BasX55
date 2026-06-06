@@ -10,12 +10,13 @@ namespace Dsw2026Ej14.Presentation.Presenters
 {
     public class AgregarVehiculosPresenter : IAgregarVehiculosPresenter
     {
-        private readonly AgregarVehiculosView _vista;
+        private IAgregarVehiculosView _vista;
 
-        public AgregarVehiculosPresenter(AgregarVehiculosView vista)
+        public AgregarVehiculosPresenter(IAgregarVehiculosView vista)
         {
             _vista = vista;
-            
+            _vista.SetPresenter(this);
+            _vista.AgregarVehiculo();
         }
 
         public List<Sucursal> ObtenerSucursales()
@@ -23,10 +24,7 @@ namespace Dsw2026Ej14.Presentation.Presenters
             return Persistencia.GetSucursales();
         }
 
-        public void AgregarVehiculo()
-        {
-            _vista.AgregarVehiculo();
-        }
+        
 
         public bool AgregarVehiculoElectrico(string patente, string marca, string modelo, int anio,
             double capacidadCarga, Sucursal sucursal, double kwhBase)

@@ -6,6 +6,7 @@ namespace Dsw2026Ej14.Presentation.Interfaces
 {
     public interface IMenuView
     {
-        public void DibujarMenu();
+        void SetPresenter(IMenuPresenter presenter);
+        void DibujarMenu();
     }
 }

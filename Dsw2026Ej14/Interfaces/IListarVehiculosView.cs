@@ -7,8 +7,9 @@ namespace Dsw2026Ej14.Presentation.Interfaces
 {
     public interface IListarVehiculosView
     {
-        public void ListarVehiculos(List<VehiculoViewModel> vehiculos);
-        public void MostrarConsumos(double electricos, double combustible);
+        void ListarVehiculos(List<VehiculoViewModel> vehiculos);
+        void MostrarConsumos(double electricos, double combustible);
 
+        void SetPresenter(IListarVehiculosPresenter presenter);
     }
 }

@@ -6,8 +6,8 @@ namespace Dsw2026Ej14.Presentation.Interfaces
 {
     public interface IListarVehiculosPresenter
     {
-        public void ListarVehiculos();
-        public void CalcularConsumos(Dictionary<string, double> vehiculos);
+        void ListarVehiculos();
+        void CalcularConsumos(Dictionary<string, double> vehiculos);
 
     }
 }

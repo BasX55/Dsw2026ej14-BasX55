@@ -8,11 +8,12 @@ namespace Dsw2026Ej14.Presentation.Views
 {
     public class MenuView : BaseView, IMenuView
     {
-        private MenuPresenter _presenter;
+        private IMenuPresenter _presenter;
         public MenuView()
         {
-            _presenter = new MenuPresenter(this);
+            
         }
+        
         public void DibujarMenu()
         {
             
@@ -38,6 +39,11 @@ namespace Dsw2026Ej14.Presentation.Views
                 }
             }
             while (opcion != "3");
+        }
+
+        public void SetPresenter(IMenuPresenter presenter)
+        {
+            _presenter = presenter;
         }
     }
 }

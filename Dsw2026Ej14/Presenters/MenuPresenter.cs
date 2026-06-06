@@ -9,20 +9,26 @@ namespace Dsw2026Ej14.Presentation.Presenters
 {
     public class MenuPresenter : IMenuPresenter
     {
-        private readonly MenuView _vista;
-        public MenuPresenter(MenuView vista)
+        private IMenuView _vista;
+        private GestorPresentadores _gestor;
+        public MenuPresenter(IMenuView vista, GestorPresentadores gestor)
         {
             _vista = vista;
+            _vista.SetPresenter(this);
+            _gestor = gestor;
+            _vista.DibujarMenu();
         }
+
+        
 
         public void AgregarVehiculo()
         {
-            AgregarVehiculosView _vistaAgregar = new AgregarVehiculosView();
+            _gestor.NavegarA<IAgregarVehiculosPresenter>();
         }
 
         public void ListarVehiculo()
         {
-            ListarVehiculosView _vistaLista = new ListarVehiculosView();
+            _gestor.NavegarA<IListarVehiculosPresenter>();
         } 
 
         
