@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Dsw2026Ej14.Presentation.Interfaces
 {
-    public interface IMenuPresenter
+    public interface IMenuPresenter : IPresenter<IMenuView>
     {
         void AgregarVehiculo();
         void ListarVehiculo();

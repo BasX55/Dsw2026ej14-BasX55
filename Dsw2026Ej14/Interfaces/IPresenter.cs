@@ -4,8 +4,12 @@ using System.Text;
 
 namespace Dsw2026Ej14.Presentation.Interfaces
 {
-    public interface IAgregarVehiculosView : IBaseView<IAgregarVehiculosPresenter>
+    public interface IPresenter
     {
-        void AgregarVehiculo();
+    }
+
+    public interface IPresenter<T> : IPresenter
+    {
+        T Vista { get; }
     }
 }

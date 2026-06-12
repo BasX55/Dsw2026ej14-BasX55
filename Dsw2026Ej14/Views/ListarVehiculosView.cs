@@ -9,13 +9,9 @@ using System.Text;
 
 namespace Dsw2026Ej14.Presentation.Views
 {
-    public class ListarVehiculosView : BaseView, IListarVehiculosView
+    public class ListarVehiculosView : BaseView<IListarVehiculosPresenter>, IListarVehiculosView
     {
-        private IListarVehiculosPresenter _presenter;
-        public ListarVehiculosView()
-        {
-            
-        }
+        
         public void ListarVehiculos(List<VehiculoViewModel> vehiculos)
         {
             LimpiarPantalla();
@@ -35,9 +31,40 @@ namespace Dsw2026Ej14.Presentation.Views
             {
                 vehiculosDict.Add(vehiculo.Patente, vehiculo.KmARecorrer);
             }
-            _presenter.CalcularConsumos(vehiculosDict);
+            Presentador.CalcularConsumos(vehiculosDict);
         }
 
+        public void DibujarDatos(int columnas, List<VehiculoViewModel> vehiculos)
+        {
+            int ancho = Console.WindowWidth / columnas;
+            foreach (var vehiculo in vehiculos)
+            {
+                Console.Write("|");
+                CentrarTexto(vehiculo.Patente, out int l, ancho - 1, false);
+                Console.Write("".PadRight(ancho - 1 - l));
+                Console.Write("|");
+                CentrarTexto(vehiculo.Vehiculo, out l, ancho - 1, false);
+                Console.Write("".PadRight(ancho - 1 - l));
+                Console.Write("|");
+                CentrarTexto(vehiculo.Tipo, out l, ancho - 1, false);
+                Console.Write("".PadRight(ancho - 1 - l));
+                Console.Write("|");
+                CentrarTexto(vehiculo.CapacidadCarga.ToString(), out l, ancho - 1, false);
+                Console.Write("".PadRight(ancho - 1 - l));
+                Console.Write("|");
+                CentrarTexto(vehiculo.KmPorLitro.ToString(), out l, ancho - 1, false);
+                Console.Write("".PadRight(ancho - 1 - l));
+                Console.Write("|");
+                CentrarTexto(vehiculo.Anio.ToString(), out l, ancho - 1, false);
+                Console.Write("".PadRight(ancho - 1 - l));
+                Console.Write("|");
+                CentrarTexto(vehiculo.LitrosExtra.ToString(), out l, ancho - 1, false);
+                Console.Write("".PadRight(ancho - 1 - l));
+                Console.Write("|");
+                CentrarTexto(vehiculo.KmARecorrer.ToString(), out l, ancho - 1, false);
+                Console.Write("".PadRight(ancho - 1 - l));
+            }
+        }
         public void MostrarConsumos(double electricos, double combustible)
         {
             DibujarLinea();
@@ -50,9 +77,6 @@ namespace Dsw2026Ej14.Presentation.Views
             Console.ReadLine();
         }
 
-        public void SetPresenter(IListarVehiculosPresenter presenter)
-        {
-            _presenter = presenter;
-        }
+        
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Dsw2026Ej14.Presentation.Interfaces
 {
-    public interface IAgregarVehiculosPresenter
+    public interface IAgregarVehiculosPresenter : IPresenter<IAgregarVehiculosView>
     {
         List<Sucursal> ObtenerSucursales();
         bool AgregarVehiculoElectrico(string patente, string marca, string modelo, int anio,

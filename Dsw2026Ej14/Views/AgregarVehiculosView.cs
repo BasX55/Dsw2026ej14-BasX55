@@ -7,18 +7,11 @@ using System.Text;
 
 namespace Dsw2026Ej14.Presentation.Views
 {
-    public class AgregarVehiculosView : BaseView, IAgregarVehiculosView
+    public class AgregarVehiculosView : BaseView<IAgregarVehiculosPresenter>, IAgregarVehiculosView
     {
-        private IAgregarVehiculosPresenter _presenter;
+        
 
-        public AgregarVehiculosView()
-        {
-        }
-
-        public void SetPresenter(IAgregarVehiculosPresenter presenter)
-        {
-            _presenter = presenter;
-        }
+        
         public void AgregarVehiculo()
         {
             LimpiarPantalla();
@@ -59,7 +52,7 @@ namespace Dsw2026Ej14.Presentation.Views
             Console.WriteLine("=== Datos específicos para Vehículo Eléctrico ===");
             double kwhBase = LeerDecimal("kWh Base (por cada 100 km)");
 
-            bool resultado = _presenter.AgregarVehiculoElectrico(patente, marca, modelo, anio,
+            bool resultado = Presentador.AgregarVehiculoElectrico(patente, marca, modelo, anio,
                 capacidadCarga, sucursal, kwhBase);
 
             if (resultado)
@@ -80,7 +73,7 @@ namespace Dsw2026Ej14.Presentation.Views
             double kmPorLitro = LeerDecimal("Kilómetros por Litro");
             double litrosExtra = LeerDecimal("Litros Extra");
 
-            bool resultado = _presenter.AgregarVehiculoCombustible(patente, marca, modelo, anio,
+            bool resultado = Presentador.AgregarVehiculoCombustible(patente, marca, modelo, anio,
                 capacidadCarga, sucursal, kmPorLitro, litrosExtra);
 
             if (resultado)
@@ -98,7 +91,7 @@ namespace Dsw2026Ej14.Presentation.Views
             Console.WriteLine();
             Console.WriteLine("=== Seleccione una Sucursal ===");
 
-            List<Sucursal> sucursales = _presenter.ObtenerSucursales();
+            List<Sucursal> sucursales = Presentador.ObtenerSucursales();
 
             for (int i = 0; i < sucursales.Count; i++)
             {

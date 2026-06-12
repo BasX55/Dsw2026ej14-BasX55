@@ -6,13 +6,9 @@ using System.Text;
 
 namespace Dsw2026Ej14.Presentation.Views
 {
-    public class MenuView : BaseView, IMenuView
+    public class MenuView : BaseView<IMenuPresenter>, IMenuView
     {
-        private IMenuPresenter _presenter;
-        public MenuView()
-        {
-            
-        }
+        
         
         public void DibujarMenu()
         {
@@ -31,19 +27,16 @@ namespace Dsw2026Ej14.Presentation.Views
                 if (opcion == "1")
                 {
                     Console.WriteLine("Listando vehículos...");
-                    _presenter.ListarVehiculo();
+                    Presentador.ListarVehiculo();
                 }
                 else if (opcion == "2")
                 {
-                    _presenter.AgregarVehiculo();
+                    Presentador.AgregarVehiculo();
                 }
             }
             while (opcion != "3");
         }
 
-        public void SetPresenter(IMenuPresenter presenter)
-        {
-            _presenter = presenter;
-        }
+        
     }
 }

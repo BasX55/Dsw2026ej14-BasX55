@@ -1,5 +1,6 @@
 ﻿using Dsw2026Ej14.Data;
 using Dsw2026Ej14.Domain.Entities;
+using Dsw2026Ej14.Domain.Interfaces;
 using Dsw2026Ej14.Presentation.Interfaces;
 using Dsw2026Ej14.Presentation.Views;
 using System;
@@ -8,20 +9,20 @@ using System.Text;
 
 namespace Dsw2026Ej14.Presentation.Presenters
 {
-    public class AgregarVehiculosPresenter : IAgregarVehiculosPresenter
+    public class AgregarVehiculosPresenter : BasePresenter<IAgregarVehiculosView>, IAgregarVehiculosPresenter
     {
-        private IAgregarVehiculosView _vista;
+        private readonly IPersistencia _persistencia;
 
-        public AgregarVehiculosPresenter(IAgregarVehiculosView vista)
+        public AgregarVehiculosPresenter(IAgregarVehiculosView vista, IPersistencia persistencia) : base(vista)
         {
-            _vista = vista;
-            _vista.SetPresenter(this);
-            _vista.AgregarVehiculo();
+            _persistencia = persistencia;
+            
+            Vista.AgregarVehiculo();
         }
 
         public List<Sucursal> ObtenerSucursales()
         {
-            return Persistencia.GetSucursales();
+            return _persistencia.GetSucursales();
         }
 
         
@@ -31,7 +32,7 @@ namespace Dsw2026Ej14.Presentation.Presenters
         {
             VehiculoElectrico vehiculo = new VehiculoElectrico(patente, marca, modelo, anio,
                 capacidadCarga, sucursal, kwhBase);
-            return Persistencia.AgregarVehiculo(vehiculo);
+            return _persistencia.AgregarVehiculo(vehiculo);
         }
 
         public bool AgregarVehiculoCombustible(string patente, string marca, string modelo, int anio,
@@ -39,7 +40,7 @@ namespace Dsw2026Ej14.Presentation.Presenters
         {
             VehiculoCombustible vehiculo = new VehiculoCombustible(patente, marca, modelo, anio,
                 capacidadCarga, sucursal, kilometrosPorLitro, litrosExtra);
-            return Persistencia.AgregarVehiculo(vehiculo);
+            return _persistencia.AgregarVehiculo(vehiculo);
         }
     }
 }

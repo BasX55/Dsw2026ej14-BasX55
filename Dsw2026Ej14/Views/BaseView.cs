@@ -1,43 +1,26 @@
-﻿using Dsw2026Ej14.Presentation.Models;
+﻿using Dsw2026Ej14.Presentation.Interfaces;
+using Dsw2026Ej14.Presentation.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Dsw2026Ej14.Presentation.Views
 {
-    public abstract class BaseView
+    public abstract class BaseView<T> : IBaseView<T> where T : class, IPresenter
     {
-        public void DibujarDatos(int columnas, List<VehiculoViewModel> vehiculos)
+        private T? _presentador;
+        public T Presentador => _presentador ?? throw new NotImplementedException();
+
+        void IBaseView.SetPresentador(IPresenter presentador)
         {
-            int ancho = Console.WindowWidth / columnas;
-            foreach (var vehiculo in vehiculos)
-            {
-                Console.Write("|");
-                CentrarTexto(vehiculo.Patente, out int l, ancho - 1, false);
-                Console.Write("".PadRight(ancho - 1 - l));
-                Console.Write("|");
-                CentrarTexto(vehiculo.Vehiculo, out l, ancho - 1, false);
-                Console.Write("".PadRight(ancho - 1 - l));
-                Console.Write("|");
-                CentrarTexto(vehiculo.Tipo, out l, ancho - 1, false);
-                Console.Write("".PadRight(ancho - 1 - l));
-                Console.Write("|");
-                CentrarTexto(vehiculo.CapacidadCarga.ToString(), out l, ancho - 1, false);
-                Console.Write("".PadRight(ancho - 1 - l));
-                Console.Write("|");
-                CentrarTexto(vehiculo.KmPorLitro.ToString(), out l, ancho - 1, false);
-                Console.Write("".PadRight(ancho - 1 - l));
-                Console.Write("|");
-                CentrarTexto(vehiculo.Anio.ToString(), out l, ancho - 1, false);
-                Console.Write("".PadRight(ancho - 1 - l));
-                Console.Write("|");
-                CentrarTexto(vehiculo.LitrosExtra.ToString(), out l, ancho - 1, false);
-                Console.Write("".PadRight(ancho - 1 - l));
-                Console.Write("|");
-                CentrarTexto(vehiculo.KmARecorrer.ToString(), out l, ancho - 1, false);
-                Console.Write("".PadRight(ancho - 1 - l));
-            }
+            var presentadorEspecifico = presentador as T ?? throw new InvalidOperationException();
+            SetPresentador(presentadorEspecifico);
         }
+        public void SetPresentador(T presentador)
+        {
+            _presentador = presentador;
+        }
+        
 
         #region Util
         public static void DibujarEncabezado()
@@ -91,6 +74,10 @@ namespace Dsw2026Ej14.Presentation.Views
             Console.Write("\n");
             DibujarLinea();
         }
+
+        
+
+        
         #endregion
     }
 }

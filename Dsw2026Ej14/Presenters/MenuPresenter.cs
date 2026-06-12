@@ -7,16 +7,14 @@ using System.Text;
 
 namespace Dsw2026Ej14.Presentation.Presenters
 {
-    public class MenuPresenter : IMenuPresenter
+    public class MenuPresenter : BasePresenter<IMenuView>, IMenuPresenter
     {
-        private IMenuView _vista;
-        private GestorPresentadores _gestor;
-        public MenuPresenter(IMenuView vista, GestorPresentadores gestor)
+        
+        private readonly GestorPresentadores _gestor;
+        public MenuPresenter(IMenuView vista, GestorPresentadores gestor) : base(vista)
         {
-            _vista = vista;
-            _vista.SetPresenter(this);
             _gestor = gestor;
-            _vista.DibujarMenu();
+            Vista.DibujarMenu();
         }
 
         
